@@ -11,10 +11,19 @@ import streamlit as st
 from snowflake.snowpark import Session
 import time
 
+connexion_params = {
+    "account": st.secrets["account"],
+    "user": st.secrets["user"],
+    "password": st.secrets["password"],
+    "warehouse": st.secrets["warehouse"],
+    "database": st.secrets["database"],
+    "schema": st.secrets["schema"],
+    "role": st.secrets["role"]
+  }
+
 if 'snowflake_connection' not in st.session_state:
     # connect to Snowflake
-    with open('creds.json') as f:
-        connection_parameters = json.load(f)
+    connection_parameters = json.loads(connexion_params)
     st.session_state.snowflake_connection = Session.builder.configs(connection_parameters).create()
     session = st.session_state.snowflake_connection
 else:
