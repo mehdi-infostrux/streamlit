@@ -43,9 +43,8 @@ with st.form("data_editor_form"):
 
 if submit_button:
     try:
-        session.write_pandas(edited, "CUSTOMERS", overwrite=False)
+        session.write_pandas(edited, "CUSTOMERS", overwrite=True)
         st.success("Table updated")
-        st.dataframe(edited)
         time.sleep(5)
     except:
         st.warning("Error updating table")
