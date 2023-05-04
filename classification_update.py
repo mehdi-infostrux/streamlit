@@ -43,7 +43,7 @@ with st.form("data_editor_form"):
 
 if submit_button:
     try:
-        session.write_pandas(edited, "customers", overwrite=True)
+        session.write_pandas(edited, "customers", overwrite=False)
         st.success(edited.loc[0, "CUSTOMER_ID"])
         time.sleep(5)
     except:
