@@ -18,7 +18,7 @@ connexion_params = {
 
 if 'snowflake_connection' not in st.session_state:
     # connect to Snowflake
-    connection_parameters = json.loads(connexion_params)
+    connection_parameters = json.dumps(connexion_params)
     st.session_state.snowflake_connection = Session.builder.configs(connection_parameters).create()
     session = st.session_state.snowflake_connection
 else:
