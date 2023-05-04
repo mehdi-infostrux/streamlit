@@ -5,11 +5,6 @@ import streamlit as st
 import time
 from snowflake.snowpark import Session
 
-import pandas as pd
-import json
-import streamlit as st
-from snowflake.snowpark import Session
-import time
 
 connexion_params = {
     "account": st.secrets["account"],
