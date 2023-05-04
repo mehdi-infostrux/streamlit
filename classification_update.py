@@ -30,7 +30,7 @@ st.caption("This is a demo of the `st.experimental_data_editor`.")
 
 def get_dataset():
     # load messages df
-    df = session.table("mehdi_test_share.public.customers")
+    df = session.table("customers")
 
     return df
 
@@ -43,7 +43,7 @@ with st.form("data_editor_form"):
 
 if submit_button:
     try:
-        session.write_pandas(edited, "mehdi_test_share.public.customers", overwrite=True)
+        session.write_pandas(edited, "customers", overwrite=True)
         st.success(edited.loc[0, "CUSTOMER_ID"])
         time.sleep(5)
     except:
