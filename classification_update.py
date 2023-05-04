@@ -11,8 +11,8 @@ connexion_params = {
     "user": st.secrets["user"],
     "password": st.secrets["password"],
     "warehouse": st.secrets["warehouse"],
-    "database": st.secrets["database"],
-    "schema": st.secrets["schema"],
+    "database": "mehdi_test_share",
+    "schema": "public",
     "role": st.secrets["role"]
   }
 
@@ -30,7 +30,7 @@ st.caption("This is a demo of the `st.experimental_data_editor`.")
 
 def get_dataset():
     # load messages df
-    df = session.table("customers")
+    df = session.table("mehdi_test_share.public.customers")
 
     return df
 
@@ -43,7 +43,7 @@ with st.form("data_editor_form"):
 
 if submit_button:
     try:
-        session.write_pandas(edited, "customers", overwrite=True)
+        session.write_pandas(edited, "mehdi_test_share.public.customers", overwrite=True)
         st.success("Table updated")
         time.sleep(5)
     except:
